@@ -22,6 +22,12 @@ public class PlayerAnimation : MonoBehaviour
     public Sprite[] walkUp;
     public Sprite[] walkRight;
 
+    [Header("Shoot Animations")]
+    public Sprite[] shootDown;
+    public Sprite[] shootLeft;
+    public Sprite[] shootUp;
+    public Sprite[] shootRight;
+
     public float frameTime = 0.15f;
 
     private float timer;
@@ -32,7 +38,9 @@ public class PlayerAnimation : MonoBehaviour
 
     private Direction4 currentDirection = Direction4.Down;
     private Direction4 lastDirection;
-    private bool lastMoving; // FIX: track state change
+    private bool lastMoving;
+
+    private bool isShooting;   // 🔹 REQUIRED STATE
 
     private void Awake()
     {
@@ -44,23 +52,24 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
-        if (movement.IsMoving)
+        // Movement updates direction ONLY if not shooting
+        if (!isShooting && movement.IsMoving)
             currentDirection = GetDirection(movement.LastDirection);
 
-        // FIX: reset animation when direction OR state changes
-        if (currentDirection != lastDirection || movement.IsMoving != lastMoving)
+        // Reset animation on state change (ignore movement while shooting)
+        if (!isShooting && (currentDirection != lastDirection || movement.IsMoving != lastMoving))
         {
             frame = 0;
             timer = 0f;
-            lastDirection = currentDirection;
-            lastMoving = movement.IsMoving;
         }
 
-        Sprite[] anim = GetAnimationSet(movement.IsMoving, currentDirection);
+        lastDirection = currentDirection;
+        lastMoving = movement.IsMoving;
+
+        Sprite[] anim = GetAnimationSet();
         if (anim == null || anim.Length == 0)
             return;
 
-        // FIX: clamp frame to prevent IndexOutOfRange
         if (frame >= anim.Length)
             frame = 0;
 
@@ -69,14 +78,42 @@ public class PlayerAnimation : MonoBehaviour
             sr.sprite = anim[frame];
             frame++;
             timer = Time.time + frameTime;
+
+            // 🔹 Shooting animation ends automatically
+            if (isShooting && frame >= anim.Length)
+            {
+                isShooting = false;
+                frame = 0;
+            }
         }
     }
 
-    Sprite[] GetAnimationSet(bool moving, Direction4 dir)
+    // 🔹 CALLED BY PlayerBow
+    public void OnShoot(Vector2 shootDir)
     {
-        if (!moving)
+        currentDirection = GetDirection(shootDir);
+        isShooting = true;
+        frame = 0;
+        timer = 0f;
+    }
+
+    Sprite[] GetAnimationSet()
+    {
+        if (isShooting)
         {
-            return dir switch
+            return currentDirection switch
+            {
+                Direction4.Down => shootDown,
+                Direction4.Left => shootLeft,
+                Direction4.Up => shootUp,
+                Direction4.Right => shootRight,
+                _ => shootDown
+            };
+        }
+
+        if (!movement.IsMoving)
+        {
+            return currentDirection switch
             {
                 Direction4.Down => idleDown,
                 Direction4.Left => idleLeft,
@@ -86,7 +123,7 @@ public class PlayerAnimation : MonoBehaviour
             };
         }
 
-        return dir switch
+        return currentDirection switch
         {
             Direction4.Down => walkDown,
             Direction4.Left => walkLeft,

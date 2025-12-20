@@ -102,8 +102,8 @@ GameObject:
   - component: {fileID: 2453890943738506542}
   - component: {fileID: 2980791667562245331}
   - component: {fileID: 2753969650225030401}
-  - component: {fileID: 6708278824635331327}
   - component: {fileID: -1365200190852980106}
+  - component: {fileID: 2821874855430378228}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -450,6 +450,22 @@ MonoBehaviour:
   - {fileID: 957351051, guid: a6820f5583633f645a1a43de75207596, type: 3}
   - {fileID: -1273919914, guid: a6820f5583633f645a1a43de75207596, type: 3}
   - {fileID: -359519053, guid: a6820f5583633f645a1a43de75207596, type: 3}
+  shootDown:
+  - {fileID: -2040647397, guid: 2203e7674aec6264ebedd377a105882d, type: 3}
+  - {fileID: 1210233664, guid: 2203e7674aec6264ebedd377a105882d, type: 3}
+  - {fileID: -509963747, guid: 2203e7674aec6264ebedd377a105882d, type: 3}
+  shootLeft:
+  - {fileID: -1247522151, guid: 2203e7674aec6264ebedd377a105882d, type: 3}
+  - {fileID: -1678931554, guid: 2203e7674aec6264ebedd377a105882d, type: 3}
+  - {fileID: 1000958594, guid: 2203e7674aec6264ebedd377a105882d, type: 3}
+  shootUp:
+  - {fileID: -1671854921, guid: 2203e7674aec6264ebedd377a105882d, type: 3}
+  - {fileID: 1279889019, guid: 2203e7674aec6264ebedd377a105882d, type: 3}
+  - {fileID: 2053628718, guid: 2203e7674aec6264ebedd377a105882d, type: 3}
+  shootRight:
+  - {fileID: 2070429170, guid: 2203e7674aec6264ebedd377a105882d, type: 3}
+  - {fileID: -1741306142, guid: 2203e7674aec6264ebedd377a105882d, type: 3}
+  - {fileID: 990151720, guid: 2203e7674aec6264ebedd377a105882d, type: 3}
   frameTime: 0.1
 --- !u!114 &2980791667562245331
 MonoBehaviour:
@@ -479,22 +495,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   harvestTime: 0.4
---- !u!114 &6708278824635331327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2453890943738506550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24ecddec6a9b04384b058118533c3535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrowPrefab: {fileID: 6203335425154478937, guid: 42d00e15d9caaf546bd6f2299566af39, type: 3}
-  arrowSpeed: 10
-  attackCooldown: 0.3
-  firePoint: {fileID: 7730158536249485090}
 --- !u!114 &-1365200190852980106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,6 +509,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthUI: {fileID: 689367010959427958}
   maxHealth: 100
+--- !u!114 &2821874855430378228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2453890943738506550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630c99111cde25545a5e11389df3f0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 6203335425154478937, guid: 42d00e15d9caaf546bd6f2299566af39, type: 3}
+  arrowSpeed: 10
+  attackCooldown: 0.3
+  firePoint: {fileID: 7730158536249485090}
+  playerAnimation: {fileID: 2453890943738506542}
 --- !u!1 &3724071294031763968
 GameObject:
   m_ObjectHideFlags: 0
