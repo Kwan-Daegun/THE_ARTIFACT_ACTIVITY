@@ -4,56 +4,62 @@ using UnityEngine;
 
 public class PlayerSlash : MonoBehaviour
 {
+  [Header("Arrow")]
+    [SerializeField] private GameObject arrowPrefab;
+    [SerializeField] private float arrowSpeed = 10f;
 
-    [SerializeField]
-    private GameObject slashPrefab;
+    [Header("Attack")]
+    [SerializeField] private float attackCooldown = 0.3f;
 
-    [SerializeField]
-    private float attackCooldown = 0.3f;
+    [Header("Fire Point")]
+    [SerializeField] private Transform firePoint;
 
     private float attackTimer;
 
     private AudioSource audioSource;
-
     private Camera mainCamera;
-
-    private Vector3 spawnPosition;
-
-    private GameObject artifact;
 
     private void Awake()
     {
-
         audioSource = GetComponent<AudioSource>();
         mainCamera = Camera.main;
-
-        artifact = GameObject.FindWithTag("Artifact");
-
     }
 
     private void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time > attackTimer)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= attackTimer)
         {
-            Slash();
+            ShootArrow();
             attackTimer = Time.time + attackCooldown;
         }
-
     }
 
-    void Slash()
+    void ShootArrow()
     {
-
-        if (!artifact)
+        if (!firePoint || !arrowPrefab)
             return;
 
         audioSource.Play();
 
-        spawnPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        spawnPosition.z = 0f;
+        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorld.z = 0f;
 
-        Instantiate(slashPrefab, spawnPosition, Quaternion.identity);
+        Vector2 direction = (mouseWorld - firePoint.position).normalized;
+
+        GameObject arrow = Instantiate(
+            arrowPrefab,
+            firePoint.position,
+            Quaternion.identity
+        );
+
+        Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = direction * arrowSpeed;
+        }
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        arrow.transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
 } // class

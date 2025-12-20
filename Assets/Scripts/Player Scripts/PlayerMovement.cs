@@ -1,117 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public float movementSpeed = 3f;
 
-    private Rigidbody2D myBody;
-
+    private Rigidbody2D rb;
     private Vector2 moveVector;
 
-    private SpriteRenderer sr;
+    public Vector2 LastDirection { get; private set; }
+    public bool IsMoving { get; private set; }
 
-    private float harvestTimer;
     private bool isHarvesting;
+    private float harvestTimer;
 
-    private GameObject artifact;
-
-    private string MOVEMENT_AXIS_X = "Horizontal";
-    private string MOVEMENT_AXIS_Y = "Vertical";
+    private const string X = "Horizontal";
+    private const string Y = "Vertical";
 
     private void Awake()
     {
-
-        myBody = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
-
-
-
+        rb = GetComponent<Rigidbody2D>();
+        LastDirection = Vector2.down; // default facing
     }
 
     private void Update()
     {
-
         if (Time.time > harvestTimer)
             isHarvesting = false;
-
-        FlipSprite();
-
     }
 
     private void FixedUpdate()
     {
-
         if (isHarvesting)
-            myBody.velocity = Vector2.zero;
-        else
         {
-
-            moveVector = new Vector2(Input.GetAxis(MOVEMENT_AXIS_X), Input.GetAxis(MOVEMENT_AXIS_Y));
-
-            if (moveVector.sqrMagnitude > 1)
-                moveVector = moveVector.normalized;
-
-            myBody.velocity = new Vector2(moveVector.x * movementSpeed, moveVector.y * movementSpeed);
-
-
+            rb.velocity = Vector2.zero;
+            IsMoving = false;
+            return;
         }
 
+        moveVector = new Vector2(Input.GetAxisRaw(X), Input.GetAxisRaw(Y));
+
+        if (moveVector.sqrMagnitude > 1)
+            moveVector.Normalize();
+
+        rb.velocity = moveVector * movementSpeed;
+
+        IsMoving = moveVector != Vector2.zero;
+
+        if (IsMoving)
+            LastDirection = moveVector;
     }
 
-    void FlipSprite()
+    public void HarvestStopMovement(float time)
     {
-
-        if (Input.GetAxisRaw(MOVEMENT_AXIS_X) == 1)
-        {
-            sr.flipX = false;
-        }
-        else if (Input.GetAxisRaw(MOVEMENT_AXIS_X) == -1)
-        {
-            sr.flipX = true;
-        }
-
-    }
-
-    public void HarvestStopMovement(float time) {
         isHarvesting = true;
         harvestTimer = Time.time + time;
     }
-
-    public bool IsHarvesting() {
-        return isHarvesting;
-    }
-
-} // class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 530294697
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 134ea18409245b7478289fd3d983acf2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 65d63a0ac33e1534ca31304f76bebd8e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -310,7 +310,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.807, z: 0}
-  m_LocalScale: {x: 25, y: 20, z: 1}
+  m_LocalScale: {x: 70.740005, y: 56.592003, z: 2.8296}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9223277399704970279}
@@ -590,7 +590,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.69803923, g: 0.69803923, b: 0.69803923, a: 1}
+      maxColor: {r: 1, g: 0.94259137, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
