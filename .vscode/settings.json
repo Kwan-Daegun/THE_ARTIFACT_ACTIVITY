@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "THE_ARTIFACT_ACTIVITY.sln"
+    "dotnet.defaultSolution": "THE_ARTIFACT_ACTIVITY.slnx"
 }

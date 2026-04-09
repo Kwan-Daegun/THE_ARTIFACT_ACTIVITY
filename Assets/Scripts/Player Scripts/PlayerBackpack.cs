@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerBackpack : MonoBehaviour
 {
-
     public int maxNumberOfFruitsToStore = 50;
     public int currentNumberOfStoredFruits;
 
@@ -19,58 +18,26 @@ public class PlayerBackpack : MonoBehaviour
 
     public void AddFruits(int amount)
     {
-       
         currentNumberOfStoredFruits += amount;
 
         if (currentNumberOfStoredFruits > maxNumberOfFruitsToStore)
             currentNumberOfStoredFruits = maxNumberOfFruitsToStore;
 
         SetBackpackInfoText(currentNumberOfStoredFruits);
-
     }
 
     public int TakeFruits()
     {
-
         int takenFruits = currentNumberOfStoredFruits;
         currentNumberOfStoredFruits = 0;
 
         SetBackpackInfoText(currentNumberOfStoredFruits);
 
         return takenFruits;
-        
     }
 
-    void SetBackpackInfoText(int amount) {
+    void SetBackpackInfoText(int amount)
+    {
         backpackInfoTxt.text = "Backpack: " + amount + "/" + maxNumberOfFruitsToStore;
     }
-
-} // class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

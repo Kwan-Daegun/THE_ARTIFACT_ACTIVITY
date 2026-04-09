@@ -49,6 +49,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -139,6 +142,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -163,7 +169,7 @@ SpriteRenderer:
   m_SortingLayerID: 870717223
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 757afd53b9a1a334bbdc1be4a715d44e, type: 3}
+  m_Sprite: {fileID: 4597034571328457995, guid: b4f4b0d2ce8bb01439655b9532566add, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -182,6 +188,7 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4211047130507291870}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -205,23 +212,23 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0.0018892884, y: 0.02455923}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.74285716, y: 0.6857143}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 0.9206549, y: 0.66372746}
   m_EdgeRadius: 0
 --- !u!50 &4211047130507291857
 Rigidbody2D:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -232,8 +239,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 4
-  m_AngularDrag: 0.05
+  m_LinearDamping: 4
+  m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -259,9 +266,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wolfAnimSprites:
-  - {fileID: 21300000, guid: 757afd53b9a1a334bbdc1be4a715d44e, type: 3}
-  - {fileID: 21300000, guid: c46770cd7ac19024f955eb73b7e174ce, type: 3}
+  - {fileID: 389222608691436455, guid: b4f4b0d2ce8bb01439655b9532566add, type: 3}
+  - {fileID: -6059234187639177050, guid: b4f4b0d2ce8bb01439655b9532566add, type: 3}
+  - {fileID: -3644079329288010802, guid: b4f4b0d2ce8bb01439655b9532566add, type: 3}
+  - {fileID: 1841246215997700957, guid: b4f4b0d2ce8bb01439655b9532566add, type: 3}
+  - {fileID: -6480685985554860386, guid: b4f4b0d2ce8bb01439655b9532566add, type: 3}
+  - {fileID: -4430927646145171018, guid: b4f4b0d2ce8bb01439655b9532566add, type: 3}
+  - {fileID: 6508770604808494769, guid: b4f4b0d2ce8bb01439655b9532566add, type: 3}
+  - {fileID: -6047682986328319024, guid: b4f4b0d2ce8bb01439655b9532566add, type: 3}
+  wolfAttackSprites:
+  - {fileID: 8853811281132926468, guid: a68ff04ca5b752e4091b3766fef8347c, type: 3}
+  - {fileID: -5623437517728776376, guid: a68ff04ca5b752e4091b3766fef8347c, type: 3}
+  - {fileID: 6888654917976394765, guid: a68ff04ca5b752e4091b3766fef8347c, type: 3}
+  - {fileID: 8280436877048680537, guid: a68ff04ca5b752e4091b3766fef8347c, type: 3}
+  - {fileID: 5019799375213093951, guid: a68ff04ca5b752e4091b3766fef8347c, type: 3}
+  - {fileID: -2593989838174032002, guid: a68ff04ca5b752e4091b3766fef8347c, type: 3}
   animTimeTreshold: 0.15
+  attackAnimTimeTreshold: 0.1
 --- !u!114 &4211047130507291860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEater: 0
+  isAtkPlayer: 0
   moveSpeed: 1
   attackDamage: 5
   attackTimeTreshold: 1

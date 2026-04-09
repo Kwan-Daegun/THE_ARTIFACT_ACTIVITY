@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float movementSpeed = 3f;
 
     private Rigidbody2D rb;
+
     private Vector2 moveVector;
+    private float moveX;
 
     public Vector2 LastDirection { get; private set; }
     public bool IsMoving { get; private set; }
@@ -13,13 +16,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isHarvesting;
     private float harvestTimer;
 
-    private const string X = "Horizontal";
-    private const string Y = "Vertical";
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        LastDirection = Vector2.down; // default facing
+        LastDirection = Vector2.down;
     }
 
     private void Update()
@@ -32,22 +32,31 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isHarvesting)
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             IsMoving = false;
             return;
         }
 
-        moveVector = new Vector2(Input.GetAxisRaw(X), Input.GetAxisRaw(Y));
+        moveVector = new Vector2(moveX, 0f);
 
-        if (moveVector.sqrMagnitude > 1)
-            moveVector.Normalize();
-
-        rb.velocity = moveVector * movementSpeed;
+        rb.linearVelocity = moveVector * movementSpeed;
 
         IsMoving = moveVector != Vector2.zero;
 
         if (IsMoving)
             LastDirection = moveVector;
+    }
+
+    public void Move(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            moveX = context.ReadValue<Vector2>().x;
+        }
+        else if (context.canceled)
+        {
+            moveX = 0f;
+        }
     }
 
     public void HarvestStopMovement(float time)

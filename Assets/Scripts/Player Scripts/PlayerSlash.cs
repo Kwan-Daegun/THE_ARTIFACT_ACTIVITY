@@ -55,7 +55,7 @@ public class PlayerSlash : MonoBehaviour
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.velocity = direction * arrowSpeed;
+            rb.linearVelocity = direction * arrowSpeed;
         }
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

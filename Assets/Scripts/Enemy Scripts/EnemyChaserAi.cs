@@ -9,12 +9,14 @@ public class EnemyChaserAi : MonoBehaviour
     public int attackDamage = 5;
     public float attackCooldown = 1f;
     public float stopDistance = 1f;
+    private EnemyAnimation enemyAnim;
 
-    private Transform target;
+    public Transform target;
     private float attackTimer;
 
     private void Start()
     {
+         enemyAnim = GetComponent<EnemyAnimation>();
         GameObject targetObj = GameObject.FindGameObjectWithTag(targetTag);
         if (targetObj != null)
             target = targetObj.transform;
@@ -48,5 +50,7 @@ public class EnemyChaserAi : MonoBehaviour
         {
             health.TakeDamage(attackDamage);
         }
+        if (enemyAnim != null)
+        enemyAnim.TriggerAttackAnim();
     }
 }

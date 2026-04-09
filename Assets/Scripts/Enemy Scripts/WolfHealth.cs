@@ -14,6 +14,8 @@ public class WolfHealth : MonoBehaviour
 
     private int currentHealth;
 
+    public int xpValue = 10; // XP awarded on death
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -28,9 +30,10 @@ public class WolfHealth : MonoBehaviour
         healthUI.transform.localScale = new Vector3(scale, healthUI.transform.localScale.y, 1f);
 
         if (currentHealth <= 0)
+        {
+            FindObjectOfType<XPSystem>().GainXP(xpValue);
             Destroy(gameObject);
-
-
+        }
     }
 
 

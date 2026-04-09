@@ -7,7 +7,7 @@ public class PlayerBow : MonoBehaviour
     [SerializeField] private float arrowSpeed = 10f;
 
     [Header("Attack")]
-    [SerializeField] private float attackCooldown = 0.3f;
+    public float attackCooldown = 0.3f;
 
     [Header("Fire Point")]
     [SerializeField] private Transform firePoint;
@@ -16,14 +16,15 @@ public class PlayerBow : MonoBehaviour
     [SerializeField] private PlayerAnimation playerAnimation;
 
     private float attackTimer;
-
     private AudioSource audioSource;
     private Camera mainCamera;
+    private XPSystem xpSystem;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         mainCamera = Camera.main;
+        xpSystem = GetComponent<XPSystem>();
     }
 
     private void Update()
@@ -47,7 +48,6 @@ public class PlayerBow : MonoBehaviour
 
         Vector2 direction = (mouseWorld - firePoint.position).normalized;
 
-        // 🔹 INFORM ANIMATION ABOUT SHOOT DIRECTION
         if (playerAnimation != null)
             playerAnimation.OnShoot(direction);
 
@@ -57,9 +57,14 @@ public class PlayerBow : MonoBehaviour
             Quaternion.identity
         );
 
+        // Apply damage bonus from XPSystem
+        Arrow arrowScript = arrow.GetComponent<Arrow>();
+        if (arrowScript != null && xpSystem != null)
+            arrowScript.damage += xpSystem.arrowDamageBonus;
+
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
         if (rb != null)
-            rb.velocity = direction * arrowSpeed;
+            rb.linearVelocity = direction * arrowSpeed;
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         arrow.transform.rotation = Quaternion.Euler(0f, 0f, angle);
