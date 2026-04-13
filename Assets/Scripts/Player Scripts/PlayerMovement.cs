@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        moveVector = new Vector2(moveX, 0f);
+
 
         rb.linearVelocity = moveVector * movementSpeed;
 
@@ -51,11 +51,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            moveX = context.ReadValue<Vector2>().x;
+            moveVector = context.ReadValue<Vector2>();
         }
         else if (context.canceled)
         {
-            moveX = 0f;
+            moveVector = Vector2.zero;
         }
     }
 

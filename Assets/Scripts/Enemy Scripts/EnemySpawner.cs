@@ -1,65 +1,85 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject wolfPrefab, wolfEaterPrefab, enemy1Prefab;
+    [SerializeField] private GameObject wolfPrefab, wolfEaterPrefab, enemy1Prefab;
+    [SerializeField] private Transform[] spawnPoints;
 
-    [SerializeField]
-    private Transform[] spawnPoints;
+    [Header("Wave Settings")]
+    public int totalWaves = 10;
+    public float timeBetweenWaves = 5f;
 
-    [SerializeField]
-    private int eaterChance = 3; // chance out of 10 to spawn eater wolf
-    [SerializeField]
-    private int enemy1Chance = 2; // chance out of 10 to spawn enemy1
+    [Header("UI")]
+    public TMP_Text waveText;
 
-    [SerializeField]
-    private float spawnTime = 12f;
-    [SerializeField]
-    private float spawnReductionPerWolf = 1f;
-    [SerializeField]
-    private float minSpawnDelay = 3.5f;
-
-    private float currentSpawnTime;
-    private float timer;
+    public static int enemiesAlive = 0;
+    private int currentWave = 0;
 
     private void Start()
     {
-        currentSpawnTime = spawnTime;
-        timer = Time.time;
+        enemiesAlive = 0;
+        StartCoroutine(StartNextWave());
     }
 
-    private void Update()
+    IEnumerator StartNextWave()
     {
-        if (Time.time > timer)
+        while (currentWave < totalWaves)
         {
-            Spawn();
+            currentWave++;
+            UpdateWaveText();
 
-            currentSpawnTime -= spawnReductionPerWolf;
-            if (currentSpawnTime <= minSpawnDelay)
-                currentSpawnTime = minSpawnDelay;
+            yield return StartCoroutine(SpawnWave(currentWave));
 
-            timer = Time.time + currentSpawnTime;
+            yield return new WaitUntil(() => enemiesAlive <= 0);
+
+            if (currentWave < totalWaves)
+            {
+                if (waveText != null)
+                    waveText.text = "Next wave in " + timeBetweenWaves + "s...";
+                yield return new WaitForSeconds(timeBetweenWaves);
+            }
+        }
+
+        if (waveText != null)
+            waveText.text = "Final Wave Complete!";
+
+        if (GameOverUIController.instance != null)
+            GameOverUIController.instance.Win();
+    }
+
+    IEnumerator SpawnWave(int wave)
+    {
+        int enemyCount = 3 + (wave * 2);
+        float spawnDelay = Mathf.Max(0.3f, 1.5f - (wave * 0.1f));
+
+        for (int i = 0; i < enemyCount; i++)
+        {
+            enemiesAlive++;
+            SpawnEnemy(wave);
+            yield return new WaitForSeconds(spawnDelay);
         }
     }
 
-    void Spawn()
+    void SpawnEnemy(int wave)
     {
-        int roll = Random.Range(0, 11);
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        int roll = Random.Range(0, 10);
 
-        if (roll <= enemy1Chance)
-        {
-            Instantiate(enemy1Prefab, spawnPoints[Random.Range(0, spawnPoints.Length)].position, Quaternion.identity);
-        }
-        else if (roll <= enemy1Chance + eaterChance)
-        {
-            Instantiate(wolfEaterPrefab, spawnPoints[Random.Range(0, spawnPoints.Length)].position, Quaternion.identity);
-        }
+        if (wave >= 7 && roll < 4)
+            Instantiate(enemy1Prefab, spawnPoint.position, Quaternion.identity);
+        else if (wave >= 4 && roll < 4)
+            Instantiate(wolfEaterPrefab, spawnPoint.position, Quaternion.identity);
+        else if (roll < 3 + (wave / 3))
+            Instantiate(wolfEaterPrefab, spawnPoint.position, Quaternion.identity);
         else
-        {
-            Instantiate(wolfPrefab, spawnPoints[Random.Range(0, spawnPoints.Length)].position, Quaternion.identity);
-        }
+            Instantiate(wolfPrefab, spawnPoint.position, Quaternion.identity);
+    }
+
+    void UpdateWaveText()
+    {
+        if (waveText != null)
+            waveText.text = "Wave " + currentWave + " / " + totalWaves;
     }
 }

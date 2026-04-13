@@ -4,39 +4,21 @@ using UnityEngine;
 
 public class WolfAI : MonoBehaviour
 {
+    [SerializeField] private bool isEater;
+    [SerializeField] private bool isAtkPlayer;
+    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private int attackDamage = 5;
+    [SerializeField] private float attackTimeTreshold = 1f;
+    [SerializeField] private float eatTimeTreshold = 2f;
+    [SerializeField] private LayerMask bushMask;
 
-    [SerializeField]
-    private bool isEater;
-
-    [SerializeField]
-    private bool isAtkPlayer; // When checked, wolf attacks the player instead
-
-    [SerializeField]
-    private float moveSpeed = 1f;
-
-    [SerializeField]
-    private int attackDamage = 5;
-
-    [SerializeField]
-    private float attackTimeTreshold = 1f;
-
-    [SerializeField]
-    private float eatTimeTreshold = 2f;
-
-    [SerializeField]
-    private LayerMask bushMask;
-
-    [HideInInspector]
-    public bool isMoving, left;
+    [HideInInspector] public bool isMoving, left;
 
     private Artifact artifact;
     private GameObject player;
-
     private BushFruits bushFruitsTarget;
-
     private float attackTimer;
     private float eatTimer;
-
     private bool killingBush;
     private bool isAttacking;
     private WolfAnim wolfAnim;
@@ -58,22 +40,18 @@ public class WolfAI : MonoBehaviour
         artifact = GameObject.FindWithTag("Artifact").GetComponent<Artifact>();
 
         if (isAtkPlayer)
-            player = GameObject.FindWithTag("Player"); // Make sure your Player has the "Player" tag
+            player = GameObject.FindWithTag("Player");
     }
 
     void Update()
     {
-
-        if (!artifact)
-            return;
+        if (!artifact) return;
 
         if (isEater)
         {
-
             if (bushFruitsTarget && bushFruitsTarget.enabled &&
                 bushFruitsTarget.HasFruits() && !killingBush)
             {
-
                 if (Vector2.Distance(transform.position, bushFruitsTarget.transform.position) > 0.5f)
                 {
                     float step = moveSpeed * Time.deltaTime;
@@ -88,7 +66,6 @@ public class WolfAI : MonoBehaviour
                     eatTimer = Time.time + eatTimeTreshold;
                     killingBush = true;
                 }
-
             }
             else if (killingBush)
             {
@@ -114,11 +91,9 @@ public class WolfAI : MonoBehaviour
 
             if (!bushFruitsTarget)
                 SearchForTarget();
-
         }
         else if (isAtkPlayer)
         {
-            // Wolf that attacks the player
             if (!player) return;
 
             if (Vector2.Distance(transform.position, player.transform.position) > 1.5f)
@@ -131,7 +106,7 @@ public class WolfAI : MonoBehaviour
             else if (!isAttacking)
             {
                 isAttacking = true;
-                attackTimer = Time.time + attackTimeTreshold;
+                attackTimer = Time.time;
                 isMoving = false;
             }
 
@@ -151,7 +126,6 @@ public class WolfAI : MonoBehaviour
         }
         else
         {
-            // Wolf that destroys artifact
             if (Vector2.Distance(transform.position, artifact.transform.position) > 1.5f)
             {
                 float step = moveSpeed * Time.deltaTime;
@@ -162,7 +136,7 @@ public class WolfAI : MonoBehaviour
             else if (!isAttacking)
             {
                 isAttacking = true;
-                attackTimer = Time.time + attackTimeTreshold;
+                attackTimer = Time.time;
                 isMoving = false;
             }
 
@@ -180,8 +154,13 @@ public class WolfAI : MonoBehaviour
             else
                 left = false;
         }
+    }
 
-    } // update
+    public void Die()
+    {
+        EnemySpawner.enemiesAlive--;
+        Destroy(gameObject);
+    }
 
     void SearchForTarget()
     {
@@ -202,8 +181,7 @@ public class WolfAI : MonoBehaviour
                 }
             }
 
-            if (bushFruitsTarget)
-                break;
+            if (bushFruitsTarget) break;
         }
     }
 
@@ -215,9 +193,7 @@ public class WolfAI : MonoBehaviour
 
     void AttackPlayer()
     {
-        // Call your player's TakeDamage method here
         player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
         wolfAnim.TriggerAttackAnim();
     }
-
-} // class
+}

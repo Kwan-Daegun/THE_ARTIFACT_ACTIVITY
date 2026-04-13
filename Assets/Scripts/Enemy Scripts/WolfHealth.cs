@@ -26,13 +26,14 @@ public class WolfHealth : MonoBehaviour
         currentHealth -= amount;
 
         scale = (float)currentHealth / maxHealth;
-
         healthUI.transform.localScale = new Vector3(scale, healthUI.transform.localScale.y, 1f);
+
+        GetComponent<WolfAnim>()?.FlashRed();
 
         if (currentHealth <= 0)
         {
             FindObjectOfType<XPSystem>().GainXP(xpValue);
-            Destroy(gameObject);
+            GetComponent<WolfAI>().Die();
         }
     }
 

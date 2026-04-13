@@ -8,21 +8,18 @@ public class ArtifactAbility : MonoBehaviour
     public float abilityRadius = 3.5f;
     public float pushForce = 8f;
     public float cooldown = 60f;
+    public int abilityDamage = 20;
     [Header("VFX")]
     public GameObject pushVFXPrefab;
 
     [Header("References")]
     public LayerMask enemyLayer;
 
-    private float cooldownTimer;
-    private bool playerInRange;
+    public float cooldownTimer;
 
-    private void Update()
+    public void OnAbilityButton()
     {
-        if (!playerInRange)
-            return;
-
-        if (Time.time >= cooldownTimer && Input.GetKeyDown(KeyCode.Q))
+        if (Time.time >= cooldownTimer)
         {
             ActivatePush();
             Debug.Log("activated");
@@ -32,11 +29,12 @@ public class ArtifactAbility : MonoBehaviour
 
     void ActivatePush()
     {
-        
-        GameObject vfx = Instantiate(pushVFXPrefab, transform.position, Quaternion.identity);
-        vfx.transform.localScale = Vector3.one * abilityRadius *0.1f;
+        if (pushVFXPrefab != null)
+        {
+            GameObject vfx = Instantiate(pushVFXPrefab, transform.position, Quaternion.identity);
+            vfx.transform.localScale = Vector3.one * abilityRadius * 0.1f;
+        }
 
-        
         Collider2D[] enemies = Physics2D.OverlapCircleAll(
             transform.position,
             abilityRadius,
@@ -45,6 +43,10 @@ public class ArtifactAbility : MonoBehaviour
 
         foreach (Collider2D enemy in enemies)
         {
+            WolfHealth wolf = enemy.GetComponent<WolfHealth>();
+            if (wolf != null)
+                wolf.TakeDamage(abilityDamage);
+
             Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
@@ -54,19 +56,6 @@ public class ArtifactAbility : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-            playerInRange = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-            playerInRange = false;
-    }
-
-    // Optional: visualize radius in editor
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;

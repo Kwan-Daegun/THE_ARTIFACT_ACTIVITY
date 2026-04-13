@@ -17,47 +17,47 @@ public class PlayerBow : MonoBehaviour
 
     private float attackTimer;
     private AudioSource audioSource;
-    private Camera mainCamera;
     private XPSystem xpSystem;
+
+    private Vector2 shootDirection = Vector2.right;
+    private void Start()
+    {
+        xpSystem = FindObjectOfType<XPSystem>();
+    }
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        mainCamera = Camera.main;
-        xpSystem = GetComponent<XPSystem>();
     }
 
-    private void Update()
+    public void OnShootButton()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time >= attackTimer)
+        if (Time.time >= attackTimer)
         {
             ShootArrow();
             attackTimer = Time.time + attackCooldown;
         }
     }
 
+    public void SetShootDirection(Vector2 direction)
+    {
+        if (direction != Vector2.zero)
+            shootDirection = direction.normalized;
+    }
+
     void ShootArrow()
     {
-        if (!firePoint || !arrowPrefab)
-            return;
+        if (!firePoint || !arrowPrefab) return;
 
         audioSource.Play();
 
-        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorld.z = 0f;
-
-        Vector2 direction = (mouseWorld - firePoint.position).normalized;
+        Vector2 direction = GetNearestEnemyDirection();
 
         if (playerAnimation != null)
             playerAnimation.OnShoot(direction);
 
-        GameObject arrow = Instantiate(
-            arrowPrefab,
-            firePoint.position,
-            Quaternion.identity
-        );
+        GameObject arrow = Instantiate(arrowPrefab, firePoint.position, Quaternion.identity);
 
-        // Apply damage bonus from XPSystem
         Arrow arrowScript = arrow.GetComponent<Arrow>();
         if (arrowScript != null && xpSystem != null)
             arrowScript.damage += xpSystem.arrowDamageBonus;
@@ -68,5 +68,27 @@ public class PlayerBow : MonoBehaviour
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         arrow.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+    }
+
+    Vector2 GetNearestEnemyDirection()
+    {
+        WolfAI[] enemies = FindObjectsOfType<WolfAI>();
+        WolfAI nearest = null;
+        float closestDist = Mathf.Infinity;
+
+        foreach (WolfAI enemy in enemies)
+        {
+            float dist = Vector2.Distance(transform.position, enemy.transform.position);
+            if (dist < closestDist)
+            {
+                closestDist = dist;
+                nearest = enemy;
+            }
+        }
+
+        if (nearest != null)
+            return (nearest.transform.position - transform.position).normalized;
+        else
+            return shootDirection; // fallback to last known direction if no enemies
     }
 }

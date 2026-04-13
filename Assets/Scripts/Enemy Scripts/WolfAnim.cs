@@ -85,5 +85,15 @@ public class WolfAnim : MonoBehaviour
             animTimer = Time.time;
         }
     }
+    public void FlashRed()
+    {
+        StartCoroutine(RedFlashRoutine());
+    }
 
+    IEnumerator RedFlashRoutine()
+    {
+        sr.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sr.color = Color.white;
+    }
 } // class

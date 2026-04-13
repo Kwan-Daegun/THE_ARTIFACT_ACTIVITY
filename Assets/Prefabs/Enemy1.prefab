@@ -152,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthUI: {fileID: 1931587700479053477}
   maxHealth: 100
+  xpValue: 20
 --- !u!114 &-4184029915935934838
 MonoBehaviour:
   m_ObjectHideFlags: 0

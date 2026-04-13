@@ -8,8 +8,7 @@ public class PlayerBackpack : MonoBehaviour
     public int maxNumberOfFruitsToStore = 50;
     public int currentNumberOfStoredFruits;
 
-    [SerializeField]
-    private Text backpackInfoTxt;
+    [SerializeField] private Text backpackInfoTxt;
 
     private void Start()
     {
@@ -39,5 +38,10 @@ public class PlayerBackpack : MonoBehaviour
     void SetBackpackInfoText(int amount)
     {
         backpackInfoTxt.text = "Backpack: " + amount + "/" + maxNumberOfFruitsToStore;
+    }
+
+    public void UpdateBackpackText()
+    {
+        backpackInfoTxt.text = "Backpack: " + currentNumberOfStoredFruits + "/" + maxNumberOfFruitsToStore;
     }
 }

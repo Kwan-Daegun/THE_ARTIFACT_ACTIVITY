@@ -320,3 +320,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthUI: {fileID: 899246067}
   maxHealth: 100
+  xpValue: 20

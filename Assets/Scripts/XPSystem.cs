@@ -24,8 +24,9 @@ public class XPSystem : MonoBehaviour
 
     private void Start()
     {
-        playerBow = GetComponent<PlayerBow>();
-        playerBackpack = GetComponent<PlayerBackpack>();
+        playerBackpack = FindObjectOfType<PlayerBackpack>();
+
+        playerBow = FindObjectOfType<PlayerBow>();
 
         levelUpPanel.SetActive(false);
 
@@ -42,8 +43,7 @@ public class XPSystem : MonoBehaviour
         {
             levelUpPending = true;
             levelUpPanel.SetActive(true);
-
-            Time.timeScale = 0f; // pause game
+            Time.timeScale = 0f;
         }
     }
 
@@ -52,7 +52,7 @@ public class XPSystem : MonoBehaviour
         if (levelUpPending) return;
 
         currentXP += amount;
-        Debug.Log("XP: " + currentXP + " / " + xpToNextLevel);
+        Debug.Log("EXP: " + currentXP + " / " + xpToNextLevel);
         UpdateXPText();
     }
 
@@ -77,7 +77,7 @@ public class XPSystem : MonoBehaviour
         }
 
         levelUpPanel.SetActive(false);
-        Time.timeScale = 1f; // resume game
+        Time.timeScale = 1f;
 
         UpdateXPText();
 
@@ -104,6 +104,7 @@ public class XPSystem : MonoBehaviour
         if (playerBackpack != null)
         {
             playerBackpack.maxNumberOfFruitsToStore += 10;
+            playerBackpack.UpdateBackpackText();
             Debug.Log("Backpack Capacity increased! Now: " + playerBackpack.maxNumberOfFruitsToStore);
         }
     }
@@ -111,8 +112,6 @@ public class XPSystem : MonoBehaviour
     private void UpdateXPText()
     {
         if (xpDisplayText != null)
-        {
             xpDisplayText.text = currentXP + "/" + xpToNextLevel;
-        }
     }
 }

@@ -1,0 +1,754 @@
+fileFormatVersion: 2
+guid: 5a8dd1e9b3705da4bbc12f332f22fcaf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8969558522383617670
+    second: slash_128 2_0
+  - first:
+      213: 4860798214669788320
+    second: slash_128 2_1
+  - first:
+      213: 4181623866240111397
+    second: slash_128 2_2
+  - first:
+      213: 8865990541753697181
+    second: slash_128 2_3
+  - first:
+      213: 5938663238912425774
+    second: slash_128 2_4
+  - first:
+      213: -2422250598560402007
+    second: slash_128 2_5
+  - first:
+      213: -1942768076148784187
+    second: slash_128 2_6
+  - first:
+      213: 2426075828031692261
+    second: slash_128 2_7
+  - first:
+      213: 487636007051379274
+    second: slash_128 2_8
+  - first:
+      213: -8978493480304723727
+    second: slash_128 2_9
+  - first:
+      213: 7063335857215973002
+    second: slash_128 2_10
+  - first:
+      213: -7737337246065077648
+    second: slash_128 2_11
+  - first:
+      213: 263273719246273870
+    second: slash_128 2_12
+  - first:
+      213: -2184422125112314648
+    second: slash_128 2_13
+  - first:
+      213: -7853768936255326202
+    second: slash_128 2_14
+  - first:
+      213: 2692129242956031352
+    second: slash_128 2_15
+  - first:
+      213: -5436072136475434363
+    second: slash_128 2_16
+  - first:
+      213: -4520745259845766397
+    second: slash_128 2_17
+  - first:
+      213: 5884658387226385146
+    second: slash_128 2_18
+  - first:
+      213: 5686640789148666210
+    second: slash_128 2_19
+  - first:
+      213: -5152732778642410721
+    second: slash_128 2_20
+  - first:
+      213: -495074711337499711
+    second: slash_128 2_21
+  - first:
+      213: 1295203484948784131
+    second: slash_128 2_22
+  - first:
+      213: 4836796722396418657
+    second: slash_128 2_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 70
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: slash_128 2_0
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 417
+        width: 60
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68ec0ce04f54a7c70800000000000000
+      internalID: 8969558522383617670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_1
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 416
+        width: 60
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a4ee3ef836057340800000000000000
+      internalID: 4860798214669788320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_2
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 416
+        width: 59
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 523998b40cc180a30800000000000000
+      internalID: 4181623866240111397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_3
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 416
+        width: 59
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d93c3377c635a0b70800000000000000
+      internalID: 8865990541753697181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_4
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 416
+        width: 59
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2fbb0c50ce5a6250800000000000000
+      internalID: 5938663238912425774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_5
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 416
+        width: 74
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a574db0aef626ed0800000000000000
+      internalID: -2422250598560402007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_6
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 289
+        width: 73
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c3ce2c5ab6e905e0800000000000000
+      internalID: -1942768076148784187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_7
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 278
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ed9df79c172ba120800000000000000
+      internalID: 2426075828031692261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_8
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 280
+        width: 45
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a42ccf36d5e64c600800000000000000
+      internalID: 487636007051379274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_9
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 282
+        width: 72
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f8b640ffbbf56380800000000000000
+      internalID: -8978493480304723727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_10
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 289
+        width: 84
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8623aaf982060260800000000000000
+      internalID: 7063335857215973002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_11
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 289
+        width: 80
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07254e4d4c47f9490800000000000000
+      internalID: -7737337246065077648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_12
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 161
+        width: 60
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4dbe528d0657a300800000000000000
+      internalID: 263273719246273870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_13
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 161
+        width: 60
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e43d2996af5fa1e0800000000000000
+      internalID: -2184422125112314648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_14
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 161
+        width: 57
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 608f08673cec10390800000000000000
+      internalID: -7853768936255326202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_15
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 161
+        width: 61
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 875e5df684d5c5520800000000000000
+      internalID: 2692129242956031352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_16
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 146
+        width: 60
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 582abf381313f84b0800000000000000
+      internalID: -5436072136475434363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_17
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 158
+        width: 74
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 303bcda53261341c0800000000000000
+      internalID: -4520745259845766397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_18
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 33
+        width: 73
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afad62bff918aa150800000000000000
+      internalID: 5884658387226385146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_19
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 22
+        width: 67
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 269047a2ba10bee40800000000000000
+      internalID: 5686640789148666210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_20
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 24
+        width: 45
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f13f18296d0dd78b0800000000000000
+      internalID: -5152732778642410721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_21
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 26
+        width: 72
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c3037d4c242129f0800000000000000
+      internalID: -495074711337499711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_22
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 33
+        width: 84
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 304683015bc79f110800000000000000
+      internalID: 1295203484948784131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slash_128 2_23
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 33
+        width: 80
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16256391ef0cf1340800000000000000
+      internalID: 4836796722396418657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      slash_128 2_0: 8969558522383617670
+      slash_128 2_1: 4860798214669788320
+      slash_128 2_10: 7063335857215973002
+      slash_128 2_11: -7737337246065077648
+      slash_128 2_12: 263273719246273870
+      slash_128 2_13: -2184422125112314648
+      slash_128 2_14: -7853768936255326202
+      slash_128 2_15: 2692129242956031352
+      slash_128 2_16: -5436072136475434363
+      slash_128 2_17: -4520745259845766397
+      slash_128 2_18: 5884658387226385146
+      slash_128 2_19: 5686640789148666210
+      slash_128 2_2: 4181623866240111397
+      slash_128 2_20: -5152732778642410721
+      slash_128 2_21: -495074711337499711
+      slash_128 2_22: 1295203484948784131
+      slash_128 2_23: 4836796722396418657
+      slash_128 2_3: 8865990541753697181
+      slash_128 2_4: 5938663238912425774
+      slash_128 2_5: -2422250598560402007
+      slash_128 2_6: -1942768076148784187
+      slash_128 2_7: 2426075828031692261
+      slash_128 2_8: 487636007051379274
+      slash_128 2_9: -8978493480304723727
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

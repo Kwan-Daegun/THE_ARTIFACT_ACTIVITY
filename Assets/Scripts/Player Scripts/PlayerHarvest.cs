@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class PlayerHarvest : MonoBehaviour
 {
-
-    [SerializeField]
-    private float harvestTime = 0.4f;
+    [SerializeField] private float harvestTime = 0.4f;
 
     private PlayerMovement playerMovement;
     private PlayerBackpack backpack;
-
     private AudioSource audioSource;
-
     private Collider2D collidedBush;
     private BushFruits hitBush;
-
     private bool canHarvestFruits;
 
     private void Awake()
@@ -25,46 +20,35 @@ public class PlayerHarvest : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Update()
+    public void OnHarvestButton()
     {
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space)) {
-            TryHarvestFruit();
-        }
+        TryHarvestFruit();
     }
 
     void TryHarvestFruit()
     {
-
-        // 
-        if (!canHarvestFruits)
-            return;
+        if (!canHarvestFruits) return;
 
         if (collidedBush != null)
         {
-
             hitBush = collidedBush.GetComponent<BushFruits>();
 
             if (hitBush.HasFruits())
             {
-
                 audioSource.Play();
                 playerMovement.HarvestStopMovement(harvestTime);
                 backpack.AddFruits(hitBush.HarvestFruit());
             }
-
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if(collision.CompareTag("Bush"))
+        if (collision.CompareTag("Bush"))
         {
             canHarvestFruits = true;
             collidedBush = collision;
         }
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -75,38 +59,4 @@ public class PlayerHarvest : MonoBehaviour
             collidedBush = null;
         }
     }
-
-} // class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
