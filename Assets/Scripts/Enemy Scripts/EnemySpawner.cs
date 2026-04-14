@@ -67,9 +67,9 @@ public class EnemySpawner : MonoBehaviour
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         int roll = Random.Range(0, 10);
 
-        if (wave >= 7 && roll < 4)
+        if (wave >= 7 && roll < 6)
             Instantiate(enemy1Prefab, spawnPoint.position, Quaternion.identity);
-        else if (wave >= 4 && roll < 4)
+        else if (wave >= 4 && roll < 6)
             Instantiate(wolfEaterPrefab, spawnPoint.position, Quaternion.identity);
         else if (roll < 3 + (wave / 3))
             Instantiate(wolfEaterPrefab, spawnPoint.position, Quaternion.identity);

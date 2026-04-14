@@ -23,7 +23,10 @@ public class MainMenuController : MonoBehaviour
     {
         howToPlayCanvas.enabled = false;
     }
-
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 } // class
 
 

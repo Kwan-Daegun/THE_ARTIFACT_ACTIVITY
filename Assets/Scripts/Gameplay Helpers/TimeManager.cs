@@ -12,6 +12,7 @@ public class TimeManager : MonoBehaviour
     public float timeToWin = 300f;
 
     private bool gameOver;
+    private bool isPaused = false;
 
     private GameObject artifact;
 
@@ -30,6 +31,9 @@ public class TimeManager : MonoBehaviour
     {
 
         if (gameOver || !artifact)
+            return;
+
+        if (isPaused)
             return;
 
         timeToWin -= Time.deltaTime;
@@ -65,6 +69,22 @@ public class TimeManager : MonoBehaviour
 
     }
 
+    public void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f;
+    }
+    public void backToMainMenu()
+    {
+        Time.timeScale = 1f;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
 
 } // class
 
